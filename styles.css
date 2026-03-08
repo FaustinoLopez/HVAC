@@ -215,8 +215,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 4.45rem;
+  min-height: 6rem;
   gap: 1rem;
+  transition: min-height 0.22s ease;
 }
 
 .brand {
@@ -228,16 +229,15 @@ a {
 
 .brand-mark {
   display: block;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 9rem;
+  height: 9rem;
   object-fit: contain;
-  transform: scale(2);
-  transform-origin: left center;
-  transition: transform 0.22s ease;
+  transition: width 0.22s ease, height 0.22s ease;
 }
 
 .site-header.scrolled .brand-mark {
-  transform: scale(1);
+  width: 3rem;
+  height: 3rem;
 }
 
 .brand-text {
@@ -246,6 +246,15 @@ a {
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: -0.01em;
+  transition: font-size 0.22s ease;
+}
+
+.site-header.scrolled .nav-shell {
+  min-height: 3.9rem;
+}
+
+.site-header.scrolled .brand-text {
+  font-size: 0.95rem;
 }
 
 .site-nav {
@@ -302,6 +311,13 @@ a {
   gap: 0.18rem;
   cursor: pointer;
   padding: 0.55rem;
+  transition: width 0.22s ease, height 0.22s ease, padding 0.22s ease;
+}
+
+.site-header.scrolled .nav-toggle {
+  width: 2.45rem;
+  height: 2.45rem;
+  padding: 0.45rem;
 }
 
 .nav-toggle span {

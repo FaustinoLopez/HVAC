@@ -42,21 +42,23 @@ if (navToggle && siteNav) {
 }
 
 // Add depth to the header after the user starts scrolling.
-// Use separate enter/exit thresholds to avoid jitter while the header resizes.
+// Only expand again when back at the very top to avoid bounce feedback loops.
 if (header) {
-  const SCROLL_ENTER = 28;
-  const SCROLL_EXIT = 8;
+  const SCROLL_ENTER = 32;
 
-  window.addEventListener("scroll", () => {
+  const syncHeaderState = () => {
     const y = window.scrollY;
     const isScrolled = header.classList.contains("scrolled");
 
     if (!isScrolled && y > SCROLL_ENTER) {
       header.classList.add("scrolled");
-    } else if (isScrolled && y < SCROLL_EXIT) {
+    } else if (isScrolled && y <= 0) {
       header.classList.remove("scrolled");
     }
-  });
+  };
+
+  window.addEventListener("scroll", syncHeaderState, { passive: true });
+  syncHeaderState();
 }
 
 // Demo form behavior for a static portfolio project.
