@@ -58,45 +58,65 @@
       <div class="container hero-grid">
         <div class="hero-content">
           <p class="eyebrow">Trusted HVAC Specialists in Houston, TX</p>
-          <h1>Reliable Comfort, Fast Response, and Service You Can Trust.</h1>
+          <h1>Fast HVAC Repair and Installation in Houston</h1>
           <p class="hero-subtext">
             Gulf Coast Climate helps Houston homeowners and small businesses stay comfortable year-round with expert AC and heating service, honest recommendations, and dependable results.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Book Service</a>
-            <a class="btn btn-outline" href="tel:+17135550148">Call Now</a>
-          </div>
           <ul class="trust-list" aria-label="Trust indicators">
+            <li>Same-Day Service</li>
             <li>Licensed &amp; Insured</li>
-            <li>Same-Day Appointments</li>
             <li>Financing Available</li>
-            <li>24/7 Emergency Service</li>
+            <li>24/7 Emergency Support</li>
           </ul>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact" data-track-cta="hero-book" data-track-type="book">Book Service</a>
+            <a
+              class="btn btn-secondary btn-call"
+              href="tel:+17135550148"
+              aria-label="Call Gulf Coast Climate at 713-555-0148"
+              data-track-cta="hero-call"
+              data-track-type="call"
+            >
+              Call Now: (713) 555-0148
+            </a>
+          </div>
         </div>
 
-        <aside class="hero-panel" aria-label="Service highlights">
-          <h2>Need HVAC help today?</h2>
-          <p>Our Houston dispatch team can often provide same-day service across the metro area.</p>
-          <div class="hero-stat-grid">
-            <article class="hero-stat">
-              <p class="stat-value">15+</p>
-              <p class="stat-label">Years Serving Houston</p>
-            </article>
-            <article class="hero-stat">
-              <p class="stat-value">4.9/5</p>
-              <p class="stat-label">Average Customer Rating</p>
-            </article>
-            <article class="hero-stat">
-              <p class="stat-value">2-Hour</p>
-              <p class="stat-label">Typical Response Window</p>
-            </article>
-            <article class="hero-stat">
-              <p class="stat-value">100%</p>
-              <p class="stat-label">Satisfaction Commitment</p>
-            </article>
-          </div>
-          <a class="text-link" href="#contact">Request your appointment</a>
-        </aside>
+        <div class="hero-aside">
+          <figure class="proof-card">
+            <img
+              src="images/hvac-service-tech.jpg"
+              alt="Technician inspecting an outdoor HVAC condenser unit"
+              loading="eager"
+              decoding="async"
+            >
+            <figcaption>Real service-call context homeowners recognize: on-site diagnostics and repairs.</figcaption>
+          </figure>
+
+          <aside class="hero-panel" aria-label="Service highlights">
+            <h2>Need HVAC help today?</h2>
+            <p>Our Houston dispatch team can often provide same-day service across the metro area.</p>
+            <div class="hero-stat-grid">
+              <article class="hero-stat">
+                <p class="stat-value">15+</p>
+                <p class="stat-label">Years Serving Houston</p>
+              </article>
+              <article class="hero-stat">
+                <p class="stat-value">4.9/5</p>
+                <p class="stat-label">Average Customer Rating</p>
+              </article>
+              <article class="hero-stat">
+                <p class="stat-value">2-Hour</p>
+                <p class="stat-label">Typical Response Window</p>
+              </article>
+              <article class="hero-stat">
+                <p class="stat-value">100%</p>
+                <p class="stat-label">Satisfaction Commitment</p>
+              </article>
+            </div>
+            <a class="text-link" href="#contact">Request your appointment</a>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -324,6 +344,11 @@
       </ul>
     </div>
   </footer>
+
+  <div class="mobile-cta" aria-label="Quick contact actions">
+    <a class="btn btn-outline btn-call-mobile" href="tel:+17135550148" data-track-cta="mobile-call" data-track-type="call">Call Now</a>
+    <a class="btn btn-primary" href="#contact" data-track-cta="mobile-book" data-track-type="book">Book Service</a>
+  </div>
 
   <script src="script.js"></script>
 </body>

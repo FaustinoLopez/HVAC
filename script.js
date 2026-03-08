@@ -6,6 +6,7 @@ const navLinks = document.querySelectorAll('.nav-list a[href^="#"]');
 const currentYear = document.getElementById("current-year");
 const serviceForm = document.getElementById("service-form");
 const feedback = document.getElementById("form-feedback");
+const trackedCtas = document.querySelectorAll("[data-track-cta]");
 
 // Keep footer year current automatically.
 if (currentYear) {
@@ -59,6 +60,46 @@ if (header) {
 
   window.addEventListener("scroll", syncHeaderState, { passive: true });
   syncHeaderState();
+}
+
+// Fire optional GA/Meta events for conversion-focused CTA clicks.
+if (trackedCtas.length > 0) {
+  const safeTrack = (eventName, payload) => {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, payload);
+    }
+
+    if (typeof window.fbq === "function") {
+      window.fbq("trackCustom", eventName, payload);
+    }
+  };
+
+  trackedCtas.forEach((cta) => {
+    cta.addEventListener("click", () => {
+      const ctaId = cta.dataset.trackCta || "unknown";
+      const ctaType = cta.dataset.trackType || "generic";
+      const href = cta.getAttribute("href") || "";
+      const payload = {
+        cta_id: ctaId,
+        cta_type: ctaType,
+        destination: href
+      };
+
+      safeTrack("cta_click", payload);
+
+      if (ctaType === "call") {
+        safeTrack("click_to_call", payload);
+
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Contact", {
+            content_name: ctaId,
+            value: 1,
+            currency: "USD"
+          });
+        }
+      }
+    });
+  });
 }
 
 // Demo form behavior for a static portfolio project.

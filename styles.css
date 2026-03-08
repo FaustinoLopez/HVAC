@@ -41,6 +41,7 @@ body {
     radial-gradient(circle at 95% 10%, rgba(29, 207, 178, 0.08) 0, transparent 26%),
     var(--white);
   line-height: 1.6;
+  padding-bottom: 5.8rem;
 }
 
 h1,
@@ -152,6 +153,17 @@ a {
 .btn-primary:hover,
 .btn-primary:focus-visible {
   box-shadow: 0 14px 24px rgba(31, 125, 255, 0.35);
+}
+
+.btn-secondary {
+  color: var(--white);
+  background: linear-gradient(135deg, var(--navy-800), var(--navy-900));
+  box-shadow: 0 10px 20px rgba(8, 19, 38, 0.28);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  box-shadow: 0 14px 24px rgba(8, 19, 38, 0.36);
 }
 
 .btn-outline {
@@ -342,12 +354,17 @@ a {
 
 /* Hero section */
 .hero {
-  padding-top: clamp(4.5rem, 8vw, 6.5rem);
+  padding-top: clamp(1.8rem, 3vw, 2.6rem);
+  padding-bottom: 0;
 }
 
 .hero-grid {
   display: grid;
   gap: 1.2rem;
+}
+
+#services.section {
+  padding-top: clamp(0.65rem, 1.2vw, 1.1rem);
 }
 
 .hero-content {
@@ -363,26 +380,78 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-  margin-bottom: 1.25rem;
+}
+
+.hero-actions .btn {
+  flex: 1 1 13rem;
 }
 
 .trust-list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 1.05rem;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.55rem;
 }
 
 .trust-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.48rem;
   border: 1px solid var(--slate-200);
-  background-color: var(--white);
-  border-radius: 999px;
-  padding: 0.42rem 0.8rem;
-  font-size: 0.87rem;
+  background: linear-gradient(180deg, var(--white), rgba(237, 242, 248, 0.72));
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--navy-800);
+  box-shadow: var(--shadow-soft);
+}
+
+.trust-list li::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background-color: var(--teal-400);
+  box-shadow: 0 0 0 3px rgba(29, 207, 178, 0.16);
+}
+
+.btn-call {
+  white-space: nowrap;
+  font-size: 0.92rem;
+}
+
+.hero-aside {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.proof-card {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--slate-200);
+  background-color: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.proof-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.proof-card figcaption {
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.86rem;
+  color: var(--slate-700);
+  font-weight: 600;
+  border-top: 1px solid var(--slate-100);
+  background: linear-gradient(180deg, rgba(237, 242, 248, 0.45), rgba(237, 242, 248, 0.72));
 }
 
 .hero-panel {
@@ -665,6 +734,40 @@ textarea {
   color: var(--teal-400);
 }
 
+.mobile-cta {
+  position: fixed;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 1100;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  padding: 0.55rem;
+  border-radius: 0.95rem;
+  background-color: rgba(8, 19, 38, 0.93);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 34px rgba(5, 13, 28, 0.48);
+}
+
+.mobile-cta .btn {
+  min-height: 2.85rem;
+  padding-inline: 0.75rem;
+  font-size: 0.92rem;
+}
+
+.btn-call-mobile {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.38);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.btn-call-mobile:hover,
+.btn-call-mobile:focus-visible {
+  background-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.52);
+}
+
 /* Responsive layout */
 @media (min-width: 700px) {
   .services-grid,
@@ -678,6 +781,10 @@ textarea {
     grid-template-columns: 1.4fr 1fr;
   }
 
+  .trust-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .footer-shell {
     flex-direction: row;
     justify-content: space-between;
@@ -686,6 +793,10 @@ textarea {
 }
 
 @media (min-width: 900px) {
+  body {
+    padding-bottom: 0;
+  }
+
   .nav-toggle {
     display: none;
   }
@@ -710,7 +821,45 @@ textarea {
   .hero-grid {
     grid-template-columns: 1.45fr 1fr;
     align-items: start;
-    gap: 1.3rem;
+    gap: 1rem;
+  }
+
+  .hero-aside {
+    gap: 0.6rem;
+  }
+
+  .proof-card img {
+    aspect-ratio: 16 / 7;
+  }
+
+  .proof-card figcaption {
+    display: none;
+  }
+
+  .hero-panel {
+    padding: 1rem;
+  }
+
+  .hero-stat-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.45rem;
+    margin: 0.8rem 0;
+  }
+
+  .hero-stat {
+    padding: 0.55rem;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+
+  .mobile-cta {
+    display: none;
   }
 
   .services-grid {
